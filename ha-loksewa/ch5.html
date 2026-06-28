@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revision Station — Chapter 5</title>
+<style>
+  :root{
+    --read:#1F6F8B; --recall:#548235; --rank:#BF8F00;
+    --ink:#23303a; --muted:#6b7a85; --line:#e3e8ec; --bg:#f6f8f9; --card:#ffffff;
+    --maxw:880px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 18px}
+  a{color:var(--read);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* Hero */
+  header.hero{background:linear-gradient(150deg,#16323d 0%,#1f4e5f 60%,#256074 100%);color:#fff;padding:34px 0 30px}
+  .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.5px;font-size:14px;opacity:.92}
+  .brand .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+  .eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:2px;opacity:.8;margin:18px 0 6px}
+  h1{font-size:30px;margin:0 0 4px;line-height:1.2}
+  .sub{opacity:.9;margin:0 0 16px;font-size:16px}
+  .threeR{display:inline-flex;gap:0;border-radius:999px;overflow:hidden;font-weight:700;font-size:13px}
+  .threeR span{padding:6px 14px;color:#fff}
+  .r1{background:var(--read)} .r2{background:var(--recall)} .r3{background:var(--rank)}
+  .tag{font-style:italic;opacity:.85;font-size:14px;margin-top:10px}
+
+  /* Sign-up card */
+  .signup{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin:-24px auto 28px;
+    max-width:var(--maxw);box-shadow:0 10px 30px rgba(20,50,61,.10);position:relative}
+  .signup h2{margin:0 0 4px;font-size:19px}
+  .signup p{margin:0 0 14px;color:var(--muted);font-size:14px}
+  form.su{display:flex;gap:10px;flex-wrap:wrap}
+  form.su input{flex:1 1 200px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-size:15px}
+  form.su button{background:var(--rank);color:#fff;border:0;border-radius:10px;padding:12px 22px;font-size:15px;font-weight:700;cursor:pointer}
+  form.su button:hover{filter:brightness(1.05)}
+  .su-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .su-actions a{display:inline-flex;align-items:center;justify-content:center;border-radius:10px;padding:13px 24px;font-size:15px;font-weight:700;text-decoration:none}
+  .su-actions a:hover{text-decoration:none;filter:brightness(1.04)}
+  .btn-get{background:var(--rank);color:#fff}
+  .btn-viber{background:#7360F2;color:#fff}
+  .note{font-size:12px;color:var(--muted);margin-top:10px}
+
+  section{padding:8px 0 6px}
+  .sechead{display:flex;align-items:center;gap:10px;margin:26px 0 6px}
+  .sechead .pill{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;padding:3px 9px;border-radius:6px}
+  .sechead h3{margin:0;font-size:21px}
+  .sechead.read .pill{background:var(--read)} .sechead.recall .pill{background:var(--recall)} .sechead.rank .pill{background:var(--rank)}
+  .lead{color:var(--muted);margin:0 0 14px;font-size:15px}
+
+  .grid{display:grid;gap:14px}
+  .grid.v{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+  .grid.d{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .vid{aspect-ratio:16/9;width:100%;background:#0e1c22;color:#a9c2cd;display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;border:0}
+  .vid iframe{width:100%;height:100%;border:0}
+  .card .body{padding:12px 14px}
+  .card .body h4{margin:0 0 4px;font-size:15px}
+  .card .body .meta{font-size:12px;color:var(--muted)}
+  .soon{display:inline-block;font-size:11px;font-weight:700;color:var(--rank);border:1px solid var(--rank);border-radius:6px;padding:1px 7px;margin-top:6px}
+
+  .deck{display:flex;flex-direction:column;justify-content:space-between;padding:16px;min-height:118px}
+  .deck h4{margin:0 0 4px;font-size:16px}
+  .deck .cnt{font-size:13px;color:var(--muted)}
+  .deck a.btn{margin-top:12px;align-self:flex-start;background:var(--recall);color:#fff;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:700}
+  .deck a.btn:hover{filter:brightness(1.05);text-decoration:none}
+
+  ul.rapid{list-style:none;padding:0;margin:0;columns:2;column-gap:26px}
+  ul.rapid li{break-inside:avoid;padding:7px 0 7px 20px;position:relative;font-size:14.5px;border-bottom:1px dashed var(--line)}
+  ul.rapid li::before{content:"";position:absolute;left:0;top:13px;width:8px;height:8px;border-radius:50%;background:var(--recall)}
+
+  footer{margin:34px 0 50px;color:var(--muted);font-size:13px;text-align:center}
+  footer .qrnote{background:#eef3f5;border:1px dashed var(--line);border-radius:10px;padding:12px 16px;margin:0 0 16px;color:var(--ink)}
+
+  @media(max-width:560px){ul.rapid{columns:1} h1{font-size:25px}}
+</style>
+</head>
+<body>
+
+<div style="background:#16323d;color:#fff">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;height:52px">
+    <a href="/" style="font-weight:700;letter-spacing:.4px;color:#fff;text-decoration:none">Health Exam Prep</a>
+    <a href="index.html" style="color:#cfe0e7;font-size:14px;text-decoration:none">← HA Loksewa chapters</a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <span class="dot" style="background:#7fd0e6"></span> <span id="brandName">BOOK NAME</span>
+    </div>
+    <div class="eyebrow" id="chLabel">Chapter 5 · Revision Station</div>
+    <h1 id="chTitle">Chapter title</h1>
+    <p class="sub" id="chEdition">Edition</p>
+    <div class="threeR"><span class="r1">Read</span><span class="r2">Recall</span><span class="r3">Rank</span></div>
+    <div class="tag" id="tagline">learn it · lock it in · top the merit list</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- SIGN-UP -->
+  <div class="signup">
+    <h2>Get free access to every resource</h2>
+    <p>Free flashcards, video lessons and exam alerts for Loksewa and licensing exams. Sign up once to unlock everything — and join our Viber group for updates.</p>
+    <div class="su-actions">
+      <a class="btn-get" href="https://forms.gle/f8mLCm8AzpxLduTV6" target="_blank" rel="noopener">Get free access →</a>
+      <a class="btn-viber" id="viberBtn" href="REPLACE_WITH_VIBER_LINK" target="_blank" rel="noopener">Join our Viber group</a>
+    </div>
+    <div class="note">We only use this to send you study resources. No spam. Unsubscribe anytime.</div>
+  </div>
+
+  <!-- WATCH -->
+  <section id="watch">
+    <div class="sechead read"><span class="pill">Read</span><h3>Watch the lessons</h3></div>
+    <p class="lead">Short, high-yield videos for each part of the chapter.</p>
+    <div class="grid v" id="videoGrid"></div>
+  </section>
+
+  <!-- FLASHCARDS -->
+  <section id="flashcards">
+    <div class="sechead recall"><span class="pill">Recall</span><h3>Flashcard decks</h3></div>
+    <p class="lead">Spaced-repetition decks built from the chapter's KEY facts, ALERT pairs, mnemonics and past questions.</p>
+    <div class="grid d" id="deckGrid"></div>
+  </section>
+
+  <!-- RAPID REVISION -->
+  <section id="rapid">
+    <div class="sechead rank"><span class="pill">Rank</span><h3>Rapid revision — night before</h3></div>
+    <p class="lead">The one-liners worth a final glance before the exam.</p>
+    <ul class="rapid" id="rapidList"></ul>
+  </section>
+
+  <footer>
+    <div class="qrnote">📕 You reached this page from the QR code in <strong id="chFoot">Chapter 5</strong>. Bookmark it — links here stay current even after the book is printed.</div>
+    <div id="footLine">© Author · All rights reserved.</div>
+  </footer>
+</div>
+
+<script>
+/* =========================================================================
+   CONFIG — copy this file per chapter and edit ONLY this block.
+   - To go live: replace the form `action` above with your Formspree / Google
+     Form / Netlify Forms endpoint, and fill in YouTube IDs + deck URLs below.
+   - `redirectBase` is your own short domain; point each link through it so
+     you can change targets later without reprinting the book's QR codes.
+   ========================================================================= */
+const CHAPTER = {
+  book: "Health Assistant Loksewa — Comprehensive Review",
+  edition: "17th Edition",
+  number: 5,
+  title: "Epidemiology & Disease Control",
+  tagline: "learn it · lock it in · top the merit list",
+  copyright: "© Mukesh Adhikari · All rights reserved.",
+  redirectBase: "https://YOUR-REDIRECT-DOMAIN/ch5",   // e.g. https://haloksewa.link/ch5
+
+  // Set `yt` to a YouTube video ID to embed it; leave "" to show a "Coming soon" card.
+  videos: [
+    { title: "Basic Epidemiology — concepts & study types", min: "", yt: "" },
+    { title: "Levels of prevention & immunization", min: "", yt: "" },
+    { title: "Communicable diseases — high-yield walkthrough", min: "", yt: "" },
+    { title: "Vectors & vector-borne diseases", min: "", yt: "" },
+    { title: "PSC past-question rapid drill", min: "", yt: "" }
+  ],
+
+  // Point `url` at your Anki/Quizlet deck or an on-site flashcard page.
+  decks: [
+    { title: "Epidemiology core", desc: "Concepts, studies, prevention", count: 25, url: "flashcards.html?deck=epi" },
+    { title: "Disease KEY facts", desc: "One per disease", count: 25, url: "flashcards.html?deck=diseases" },
+    { title: "Don't-confuse pairs", desc: "ALERT cards", count: 28, url: "flashcards.html?deck=confuse" },
+    { title: "Mnemonics", desc: "English hooks + Nepali context", count: 46, url: "flashcards.html?deck=mnemonics" },
+    { title: "PSC past questions", desc: "Real exam items", count: 56, url: "flashcards.html?deck=psc" }
+  ],
+
+  rapid: [
+    "John Snow = father of modern epidemiology.",
+    "Case-control → Odds Ratio; cohort → Relative Risk.",
+    "P = I × D. Incidence = new; prevalence = new + old.",
+    "Immunization = primary prevention; rehabilitation = tertiary.",
+    "Koplik's spots → measles; rice-water stool → cholera; step-ladder fever → typhoid.",
+    "IgG crosses placenta; IgM = recent infection.",
+    "Smallpox = only eradicated disease (1980).",
+    "Ascaris = commonest worm; hookworm = commonest cause of anaemia.",
+    "Ethambutol = bacteriostatic; BCG = live vaccine.",
+    "Cholera in pregnancy → furazolidone.",
+    "Vectors: Anopheles → malaria; Culex → JE & filariasis; Aedes → dengue; sand-fly → kala-azar.",
+    "Herd immunity protects the unvaccinated — but NOT for tetanus (soil-borne).",
+    "HIV window 3–12 weeks; screen by ELISA, confirm by Western blot.",
+    "Negri bodies → rabies; Widal → typhoid; tourniquet test → dengue.",
+    "Malaria infective stage = sporozoite; relapse (vivax/ovale) from hypnozoites.",
+    "Quarantine = restrict the exposed-but-well; isolation = separate the sick."
+  ]
+};
+
+/* ---- render ---- */
+function el(tag, cls, html){ const e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; }
+
+document.getElementById('brandName').textContent = CHAPTER.book;
+document.getElementById('chLabel').textContent = "Chapter " + CHAPTER.number + " · Revision Station";
+document.getElementById('chTitle').textContent = CHAPTER.title;
+document.getElementById('chEdition').textContent = CHAPTER.edition;
+document.getElementById('tagline').textContent = CHAPTER.tagline;
+document.getElementById('chFoot').textContent = "Chapter " + CHAPTER.number;
+document.getElementById('footLine').textContent = CHAPTER.copyright;
+document.title = "Revision Station — Chapter " + CHAPTER.number + " · " + CHAPTER.title;
+
+const vg = document.getElementById('videoGrid');
+CHAPTER.videos.forEach(v=>{
+  const card = el('div','card');
+  if(v.yt){
+    const f = el('div','vid');
+    f.innerHTML = '<iframe src="https://www.youtube.com/embed/'+v.yt+'" title="'+v.title+'" allowfullscreen></iframe>';
+    card.appendChild(f);
+  } else {
+    card.appendChild(el('div','vid','🎬 Video coming soon'));
+  }
+  const b = el('div','body');
+  b.appendChild(el('h4',null,v.title));
+  b.appendChild(el('div','meta', v.min ? v.min+" min" : ""));
+  if(!v.yt) b.appendChild(el('span','soon','Coming soon'));
+  card.appendChild(b);
+  vg.appendChild(card);
+});
+
+const dg = document.getElementById('deckGrid');
+CHAPTER.decks.forEach(d=>{
+  const card = el('div','card deck');
+  card.appendChild(el('h4',null,d.title));
+  card.appendChild(el('div','cnt', (d.desc?d.desc+" · ":"") + d.count + " cards"));
+  const a = el('a','btn','Open deck →'); a.href=d.url;
+  card.appendChild(a);
+  dg.appendChild(card);
+});
+
+const rl = document.getElementById('rapidList');
+CHAPTER.rapid.forEach(f=> rl.appendChild(el('li',null,f)) );
+
+/* graceful note until the Viber link is set */
+document.getElementById('viberBtn').addEventListener('click', function(e){
+  if(this.getAttribute('href')==='REPLACE_WITH_VIBER_LINK'){
+    e.preventDefault();
+    alert("Viber group link coming soon!");
+  }
+});
+</script>
+</body>
+</html>

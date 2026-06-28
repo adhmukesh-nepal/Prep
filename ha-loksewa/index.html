@@ -1,1 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loksewa — Health Assistant Review · Mukesh Adhikari</title>
+<style>
+  :root{
+    --read:#1F6F8B; --recall:#548235; --rank:#BF8F00;
+    --ink:#23303a; --muted:#6b7a85; --line:#e3e8ec; --bg:#f6f8f9; --card:#fff; --maxw:920px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--read);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 18px}
 
+  /* top bar */
+  .topbar{background:#16323d;color:#fff}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
+  .topbar .brand{font-weight:700;letter-spacing:.4px;color:#fff}
+  .topbar .brand:hover{text-decoration:none}
+  .topbar nav a{color:#cfe0e7;font-size:14px;margin-left:18px}
+  .topbar nav a:hover{color:#fff;text-decoration:none}
+
+  /* hero */
+  header.hero{background:linear-gradient(150deg,#16323d 0%,#1f4e5f 60%,#256074 100%);color:#fff;padding:40px 0 38px;text-align:center}
+  .threeR{display:inline-flex;border-radius:999px;overflow:hidden;font-weight:700;font-size:13px;margin-bottom:18px}
+  .threeR span{padding:6px 14px;color:#fff}
+  .r1{background:var(--read)} .r2{background:var(--recall)} .r3{background:var(--rank)}
+  header.hero h1{font-size:30px;margin:0 0 8px;line-height:1.25}
+  header.hero .ed{opacity:.8;font-size:14px;margin:0 0 14px}
+  header.hero p.lead{opacity:.92;max-width:620px;margin:0 auto 14px;font-size:16px}
+  .byline{display:inline-block;font-size:13px;color:#bcd4dd;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:5px 14px}
+  .tag{font-style:italic;opacity:.8;font-size:13px;margin-top:14px}
+
+  /* signup */
+  .signup{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin:-22px auto 30px;
+    max-width:var(--maxw);box-shadow:0 10px 30px rgba(20,50,61,.10)}
+  .signup h2{margin:0 0 4px;font-size:19px}
+  .signup p{margin:0 0 14px;color:var(--muted);font-size:14px}
+  form.su{display:flex;gap:10px;flex-wrap:wrap}
+  form.su input{flex:1 1 200px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-size:15px}
+  form.su button{background:var(--rank);color:#fff;border:0;border-radius:10px;padding:12px 22px;font-size:15px;font-weight:700;cursor:pointer}
+  form.su button:hover{filter:brightness(1.05)}
+  .su-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .su-actions a{display:inline-flex;align-items:center;justify-content:center;border-radius:10px;padding:13px 24px;font-size:15px;font-weight:700;text-decoration:none}
+  .su-actions a:hover{text-decoration:none;filter:brightness(1.04)}
+  .btn-get{background:var(--rank);color:#fff}
+  .btn-viber{background:#7360F2;color:#fff}
+  .note{font-size:12px;color:var(--muted);margin-top:10px}
+
+  section{padding:6px 0}
+  .sechead{display:flex;align-items:center;gap:10px;margin:26px 0 4px}
+  .sechead h3{margin:0;font-size:21px}
+  .lead2{color:var(--muted);margin:0 0 16px;font-size:15px}
+
+  /* 3R method strip */
+  .method{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 8px}
+  .method .m{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;border-top:3px solid}
+  .method .m.read{border-top-color:var(--read)} .method .m.recall{border-top-color:var(--recall)} .method .m.rank{border-top-color:var(--rank)}
+  .method .m h4{margin:0 0 4px;font-size:16px} .method .m p{margin:0;font-size:13px;color:var(--muted)}
+
+  /* chapters */
+  .chaps{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+  .chap{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;min-height:120px}
+  .chap .cn{font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--read)}
+  .chap h4{margin:6px 0 0;font-size:16px;color:var(--ink)}
+  .chap .row{margin-top:14px;display:flex;align-items:center;justify-content:space-between}
+  .chap a.open{background:var(--recall);color:#fff;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700}
+  .chap a.open:hover{filter:brightness(1.05);text-decoration:none}
+  .badge{font-size:11px;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+  .chap.soon{opacity:.72}
+  .chap.soon h4{color:var(--muted)}
+
+  footer{margin:36px 0 50px;color:var(--muted);font-size:13px;text-align:center}
+  @media(max-width:560px){.method{grid-template-columns:1fr} header.hero h1{font-size:25px}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/">Health Exam Prep</a>
+    <nav>
+      <a href="/">← All exams</a>
+      <a href="#chapters">Chapters</a>
+      <a href="#signup">Get access</a>
+      <a href="https://mukeshadhikari.com" target="_blank" rel="noopener">About the author</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="threeR"><span class="r1">Read</span><span class="r2">Recall</span><span class="r3">Rank</span></div>
+    <h1 id="bookTitle">Health Assistant Loksewa — Comprehensive Review</h1>
+    <p class="ed" id="edition">17th Edition</p>
+    <p class="lead">Free study companion for Nepal's Public Service Commission (PSC) Health Assistant exam — high-yield notes, mnemonics, rationalised MCQs, flashcards and video lessons.</p>
+    <span class="byline">By Mukesh Adhikari, PhD, MPH, MPA</span>
+    <div class="tag">learn it · lock it in · top the merit list</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- SIGN-UP -->
+  <div class="signup" id="signup">
+    <h2>Get free access to every resource</h2>
+    <p>Free flashcards, video lessons and exam alerts for Loksewa and licensing exams. Sign up once to unlock everything — and join our Viber group for updates.</p>
+    <div class="su-actions">
+      <a class="btn-get" href="https://forms.gle/f8mLCm8AzpxLduTV6" target="_blank" rel="noopener">Get free access →</a>
+      <a class="btn-viber" id="viberBtn" href="REPLACE_WITH_VIBER_LINK" target="_blank" rel="noopener">Join our Viber group</a>
+    </div>
+    <div class="note">We only use this to send study resources. No spam. Unsubscribe anytime.</div>
+  </div>
+
+  <!-- 3R METHOD -->
+  <section>
+    <div class="sechead"><h3>The 3 R method</h3></div>
+    <div class="method">
+      <div class="m read"><h4>Read</h4><p>Clean, high-yield notes — important details only, no clutter.</p></div>
+      <div class="m recall"><h4>Recall</h4><p>Mnemonics, KEY facts and flashcards to lock it in.</p></div>
+      <div class="m rank"><h4>Rank</h4><p>Rationalised MCQs and real past questions to top the merit list.</p></div>
+    </div>
+  </section>
+
+  <!-- CHAPTERS -->
+  <section id="chapters">
+    <div class="sechead"><h3>Chapters</h3></div>
+    <p class="lead2">Chapter 5 is live now; the rest are being prepared to the same standard.</p>
+    <div class="chaps" id="chapGrid"></div>
+  </section>
+
+  <footer>
+    <div id="footLine">© 2026 Mukesh Adhikari · All rights reserved.</div>
+    <div style="margin-top:6px">A companion to the printed review book.</div>
+  </footer>
+</div>
+
+<script>
+/* ===== Edit per book: chapter list + sign-up endpoint ===== */
+const SITE = {
+  signupEndpoint: "REPLACE_WITH_FORM_ENDPOINT",
+  chapters: [
+    { n: 1,  title: "Public Health Programmes",        ready: false },
+    { n: 2,  title: "Planning & Management",            ready: false },
+    { n: 3,  title: "Organizational Structure",         ready: false },
+    { n: 4,  title: "Community Mobilization",           ready: false },
+    { n: 5,  title: "Epidemiology & Disease Control",   ready: true,  url: "ch5.html" },
+    { n: 6,  title: "Chapter 6",                         ready: false },
+    { n: 7,  title: "Child Health",                      ready: false },
+    { n: 8,  title: "Chapter 8",                         ready: false },
+    { n: 9,  title: "Chapter 9",                         ready: false },
+    { n: 10, title: "Chapter 10",                        ready: false },
+    { n: 11, title: "Chapter 11",                        ready: false },
+    { n: 12, title: "Chapter 12",                        ready: false },
+    { n: 13, title: "Chapter 13",                        ready: false },
+    { n: 14, title: "Chapter 14",                        ready: false },
+    { n: 15, title: "Chapter 15",                        ready: false },
+    { n: 16, title: "Pharmacy",                          ready: false },
+    { n: 17, title: "Chapter 17",                        ready: false },
+    { n: 18, title: "Past Questions & Practice Sets",    ready: false }
+  ]
+};
+
+const grid = document.getElementById('chapGrid');
+SITE.chapters.forEach(c => {
+  const card = document.createElement('div');
+  card.className = 'chap' + (c.ready ? '' : ' soon');
+  card.innerHTML =
+    '<div><div class="cn">Chapter ' + c.n + '</div><h4>' + c.title + '</h4></div>' +
+    '<div class="row">' +
+      (c.ready
+        ? '<span></span><a class="open" href="' + c.url + '">Open →</a>'
+        : '<span class="badge">Coming soon</span>') +
+    '</div>';
+  grid.appendChild(card);
+});
+
+document.getElementById('viberBtn').addEventListener('click', function (e) {
+  if (this.getAttribute('href') === 'REPLACE_WITH_VIBER_LINK') {
+    e.preventDefault();
+    alert("Viber group link coming soon!");
+  }
+});
+</script>
+</body>
+</html>
