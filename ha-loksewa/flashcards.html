@@ -88,5 +88,6 @@ const params = new URLSearchParams(location.search);
 const want = params.get('deck');
 selectDeck(DECKS.some(d=>d.id===want)?want:DECKS[0].id);
 </script>
+<script src="/gate.js"></script>
 </body>
 </html>
