@@ -1,15 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Moved — Health Exam Prep</title>
-<meta http-equiv="refresh" content="0; url=https://prep.mukeshadhikari.com/ha-loksewa/">
-<link rel="canonical" href="https://prep.mukeshadhikari.com/ha-loksewa/">
-<script>location.replace("https://prep.mukeshadhikari.com/ha-loksewa/" + (location.search || ""));</script>
-<style>body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;text-align:center;padding:48px 20px;color:#23303a}a{color:#1F6F8B}</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Exam Prep — Loksewa & Licensing · Mukesh Adhikari</title>
+<style>
+  :root{--read:#1F6F8B;--recall:#548235;--rank:#BF8F00;--ink:#23303a;--muted:#6b7a85;--line:#e3e8ec;--bg:#f6f8f9;--card:#fff;--maxw:920px}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--read);text-decoration:none} a:hover{text-decoration:underline}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 18px}
+  .topbar{background:#16323d;color:#fff}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
+  .topbar .brand{font-weight:700;letter-spacing:.4px;color:#fff} .topbar .brand:hover{text-decoration:none}
+  .topbar nav a{color:#cfe0e7;font-size:14px;margin-left:18px} .topbar nav a:hover{color:#fff;text-decoration:none}
+  header.hero{background:linear-gradient(150deg,#16323d 0%,#1f4e5f 60%,#256074 100%);color:#fff;padding:42px 0 40px;text-align:center}
+  .threeR{display:inline-flex;border-radius:999px;overflow:hidden;font-weight:700;font-size:13px;margin-bottom:18px}
+  .threeR span{padding:6px 14px;color:#fff}
+  .r1{background:var(--read)} .r2{background:var(--recall)} .r3{background:var(--rank)}
+  header.hero h1{font-size:31px;margin:0 0 10px;line-height:1.25}
+  header.hero p.lead{opacity:.92;max-width:640px;margin:0 auto 14px;font-size:16px}
+  .byline{display:inline-block;font-size:13px;color:#bcd4dd;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:5px 14px}
+  .tag{font-style:italic;opacity:.8;font-size:13px;margin-top:14px}
+  .signup{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin:-22px auto 30px;max-width:var(--maxw);box-shadow:0 10px 30px rgba(20,50,61,.10)}
+  .signup h2{margin:0 0 4px;font-size:19px} .signup p{margin:0 0 14px;color:var(--muted);font-size:14px}
+  .su-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .su-actions a{display:inline-flex;align-items:center;justify-content:center;border-radius:10px;padding:13px 24px;font-size:15px;font-weight:700;text-decoration:none}
+  .su-actions a:hover{text-decoration:none;filter:brightness(1.04)}
+  .btn-get{background:var(--rank);color:#fff} .btn-viber{background:#7360F2;color:#fff}
+  .note{font-size:12px;color:var(--muted);margin-top:10px}
+  section{padding:6px 0}
+  .sechead{margin:24px 0 4px} .sechead h3{margin:0;font-size:21px}
+  .lead2{color:var(--muted);margin:0 0 16px;font-size:15px}
+  .exams{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+  .exam{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;justify-content:space-between;min-height:150px;border-top:4px solid var(--read)}
+  .exam .board{font-size:12px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--read)}
+  .exam h4{margin:8px 0 4px;font-size:18px;color:var(--ink)}
+  .exam .desc{font-size:13px;color:var(--muted)}
+  .exam .row{margin-top:16px;display:flex;align-items:center;justify-content:space-between}
+  .exam a.open{background:var(--recall);color:#fff;border-radius:8px;padding:9px 16px;font-size:14px;font-weight:700}
+  .exam a.open:hover{filter:brightness(1.05);text-decoration:none}
+  .badge{font-size:11px;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:4px 9px}
+  .exam.soon{opacity:.72;border-top-color:var(--line)} .exam.soon h4{color:var(--muted)}
+  footer{margin:36px 0 50px;color:var(--muted);font-size:13px;text-align:center}
+  @media(max-width:560px){header.hero h1{font-size:25px}}
+</style>
 </head>
 <body>
-<p>This page has moved.</p>
-<p>Redirecting to <a href="https://prep.mukeshadhikari.com/ha-loksewa/">prep.mukeshadhikari.com/ha-loksewa</a> …</p>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/">Health Exam Prep</a>
+    <nav>
+      <a href="#exams">Exams</a>
+      <a href="#signup">Get access</a>
+      <a href="https://mukeshadhikari.com" target="_blank" rel="noopener">About the author</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="threeR"><span class="r1">Read</span><span class="r2">Recall</span><span class="r3">Rank</span></div>
+    <h1>Health Exam Prep — Loksewa &amp; Licensing</h1>
+    <p class="lead">Free study companions for Nepal's health exams — Public Service Commission (Loksewa) and Council licensing. High-yield notes, mnemonics, rationalised MCQs, flashcards and video lessons.</p>
+    <span class="byline">By Mukesh Adhikari, PhD, MPH, MPA</span>
+    <div class="tag">learn it · lock it in · top the merit list</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="signup" id="signup">
+    <h2>Get free access to every resource</h2>
+    <p>Flashcards, video lessons and exam alerts. Sign up once — pick the exams you're preparing for and we'll send what's relevant.</p>
+    <div class="su-actions">
+      <a class="btn-get" href="https://forms.gle/f8mLCm8AzpxLduTV6" target="_blank" rel="noopener">Get free access →</a>
+      <a class="btn-viber" id="viberBtn" href="REPLACE_WITH_VIBER_LINK" target="_blank" rel="noopener">Join our Viber group</a>
+    </div>
+    <div class="note">We only use this to send study resources. No spam. Unsubscribe anytime.</div>
+  </div>
+
+  <section id="exams">
+    <div class="sechead"><h3>Choose your exam</h3></div>
+    <p class="lead2">More books are being prepared to the same standard. Pick one to start.</p>
+    <div class="exams" id="examGrid"></div>
+  </section>
+
+  <footer>© 2026 Mukesh Adhikari · All rights reserved.</footer>
+</div>
+
+<script>
+/* ===== Add a book = add one entry here (set ready:true + url when live) ===== */
+const EXAMS = [
+  { name: "Health Assistant — Loksewa", board: "PSC · Government job", desc: "Comprehensive Review (17th ed.)", ready: true, url: "ha-loksewa/" },
+  { name: "Public Health Officer — Loksewa", board: "PSC · Government job", desc: "Coming soon", ready: false },
+  { name: "Health Assistant — Licensing", board: "NHPC · Council license", desc: "Coming soon", ready: false },
+  { name: "Staff Nurse — Licensing", board: "Nursing Council · License", desc: "Coming soon", ready: false }
+];
+
+const grid = document.getElementById('examGrid');
+EXAMS.forEach(x => {
+  const card = document.createElement('div');
+  card.className = 'exam' + (x.ready ? '' : ' soon');
+  card.innerHTML =
+    '<div><div class="board">' + x.board + '</div><h4>' + x.name + '</h4><div class="desc">' + x.desc + '</div></div>' +
+    '<div class="row">' +
+      (x.ready
+        ? '<span></span><a class="open" href="' + x.url + '">Open →</a>'
+        : '<span class="badge">Coming soon</span>') +
+    '</div>';
+  grid.appendChild(card);
+});
+
+document.getElementById('viberBtn').addEventListener('click', function (e) {
+  if (this.getAttribute('href') === 'REPLACE_WITH_VIBER_LINK') {
+    e.preventDefault();
+    alert("Viber group link coming soon!");
+  }
+});
+</script>
 </body>
 </html>
